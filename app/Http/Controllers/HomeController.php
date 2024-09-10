@@ -8,6 +8,7 @@ use App\Models\Eventos;
 use App\Models\Membros;
 use App\Models\Parceiros;
 use App\Models\Perrengue;
+use App\Models\Apoiadores;
 class HomeController extends Controller
 {
     /**
@@ -76,6 +77,22 @@ class HomeController extends Controller
     {
         return view('painel.parceiros-perfil', [
             'parceiro' => $parceiro,
+        ]);
+    }
+
+    
+    public function apoiadores()
+    {
+        $apoiadores = Apoiadores::all();
+        return view('painel.apoiadores', [
+            'apoiadores' => $apoiadores,
+        ]);
+    }
+
+    public function apoiadoresPerfil(Apoiadores $apoiador)
+    {
+        return view('painel.apoiadores-perfil', [
+            'apoiador' => $apoiador,
         ]);
     }
 

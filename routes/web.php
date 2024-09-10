@@ -9,6 +9,8 @@ use App\Http\Controllers\Adm\AdmHomeController;
 use App\Http\Controllers\PerrenguesCategoriaController;
 use App\Http\Controllers\Adm\PerrenguesController;
 use App\Http\Controllers\Adm\ModulosController;
+use App\Http\Controllers\AutorizacaoController;
+use App\Http\Controllers\ApoiadoresController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +29,7 @@ Route::get('/', function () {
 Auth::routes();
 //Rotas Painel ADM Protur
 //Rotas de Membros
-Route::get('/adm/membros', [MembrosController::class, 'show'])->name('adm-show-membros');
+Route::get('/home', [MembrosController::class, 'show'])->name('adm-show-membros');
 Route::get('/adm/form/membros', [MembrosController::class, 'form'])->name('adm-form-membro');
 Route::get('/adm/info/membro/{membro}', [MembrosController::class, 'info'])->name('adm-info-membro');
 Route::post('/adm/cad/membros', [MembrosController::class, 'cadastrar'])->name('adm-cad-membro');
@@ -39,6 +41,13 @@ Route::get('/adm/form/parceiros', [ParceirosController::class, 'form'])->name('a
 Route::get('/adm/info/parceiro/{parceiro}', [ParceirosController::class, 'info'])->name('adm-info-parceiro');
 Route::post('/adm/cad/parceiros', [ParceirosController::class, 'cadastrar'])->name('adm-cad-parceiro');
 Route::post('/adm/upd/parceiros/{parceiro}', [ParceirosController::class, 'update'])->name('adm-upd-parceiro');
+
+//Rotas de Apoiadores
+Route::get('/adm/apoiadores', [ApoiadoresController::class, 'show'])->name('adm-show-apoiadores');
+Route::get('/adm/form/apoiadores', [ApoiadoresController::class, 'form'])->name('adm-form-apoiador');
+Route::get('/adm/info/apoiador/{apoiador}', [ApoiadoresController::class, 'info'])->name('adm-info-apoiador');
+Route::post('/adm/cad/apoiadores', [ApoiadoresController::class, 'cadastrar'])->name('adm-cad-apoiador');
+Route::post('/adm/upd/apoiadores/{apoiador}', [ApoiadoresController::class, 'update'])->name('adm-upd-apoiador');
 
 //Rotas de Eventos
 Route::get('/adm/eventos', [EventosController::class, 'show'])->name('adm-show-eventos');
@@ -78,7 +87,7 @@ Route::post('/adm/upd/modulos/{modulo}', [ModulosController::class, 'update'])->
 
 
 //Rotas Portal Protur
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/portal', [HomeController::class, 'index'])->name('home');
 Route::get('/membros', [HomeController::class, 'membros'])->name('membros');
 Route::get('/perfil/{membro}', [HomeController::class, 'perfil'])->name('perfil-membros');
 Route::get('/perrengue/{perrengue}', [HomeController::class, 'perrengue'])->name('perfil-perrengue');
@@ -86,3 +95,36 @@ Route::get('/agenda', [HomeController::class, 'agenda'])->name('agenda');
 Route::get('/eventos', [HomeController::class, 'eventos'])->name('eventos');
 Route::get('/parceiros', [HomeController::class, 'parceiros'])->name('parceiros');
 Route::get('/parceiros/perfil/{parceiro}', [HomeController::class, 'parceirosPerfil'])->name('parceiros-perfil');
+Route::get('/apoiadores', [HomeController::class, 'apoiadores'])->name('apoiadores');
+Route::get('/apoiadores/perfil/{apoiador}', [HomeController::class, 'apoiadoresPerfil'])->name('apoiadores-perfil');
+
+//Rotas Institucionais 
+//Rotas Autorização Blindada 
+Route::get('/autorizacao/blindada', [AutorizacaoController::class, 'home'])->name('autorizacao-home');
+//Nacional
+Route::get('/autorizacao/blindada/local', [AutorizacaoController::class, 'local'])->name('autorizacao-local');
+Route::get('/autorizacao/blindada/nacional', [AutorizacaoController::class, 'nacional'])->name('autorizacao-nacional');
+Route::get('/autorizacao/blindada/nacional/comarca', [AutorizacaoController::class, 'nacionalComarca'])->name('autorizacao-nacional-comarca');
+Route::get('/autorizacao/blindada/qual/idade', [AutorizacaoController::class, 'qualIdade'])->name('autorizacao-qual-idade');
+Route::get('/autorizacao/blindada/16anos', [AutorizacaoController::class, 'dzeisanos'])->name('autorizacao-dz-anos');
+Route::get('/autorizacao/blindada/sozinho-acompanhado', [AutorizacaoController::class, 'sozinhoAcompanhado'])->name('autorizacao-sozinho-acompanhado');
+Route::get('/autorizacao/blindada/sozinho', [AutorizacaoController::class, 'sozinho'])->name('autorizacao-sozinho');
+Route::get('/autorizacao/blindada/passaporte', [AutorizacaoController::class, 'passaporte'])->name('autorizacao-passaporte');
+Route::get('/autorizacao/blindada/acompanhado', [AutorizacaoController::class, 'acompanhado'])->name('autorizacao-acompanhado');
+Route::get('/autorizacao/blindada/pai-mae', [AutorizacaoController::class, 'paiMae'])->name('autorizacao-pai-mae');
+Route::get('/autorizacao/blindada/escolhairmao', [AutorizacaoController::class, 'escolhairmao'])->name('autorizacao-escolhairmao');
+Route::get('/autorizacao/blindada/irmao', [AutorizacaoController::class, 'irmao'])->name('autorizacao-irmao');
+Route::get('/autorizacao/blindada/avo', [AutorizacaoController::class, 'avo'])->name('autorizacao-avo');
+//Exterior 
+Route::get('/autorizacao/blindada/residencia', [AutorizacaoController::class, 'residencia'])->name('autorizacao-residencia');
+Route::get('/autorizacao/blindada/residencia/exterior', [AutorizacaoController::class, 'exterior'])->name('autorizacao-exterior');
+Route::get('/autorizacao/blindada/residencia/viajavolta', [AutorizacaoController::class, 'viajavolta'])->name('autorizacao-viajavolta');
+Route::get('/autorizacao/blindada/residencia/viajavolta/pai', [AutorizacaoController::class, 'viajavoltaPai'])->name('autorizacao-viajavolta-pai');
+Route::get('/autorizacao/blindada/residencia/viajavolta/sozinho', [AutorizacaoController::class, 'viajavoltasozinho'])->name('autorizacao-sozinho');
+Route::get('/autorizacao/blindada/residencia/viajavolta/acompanhado', [AutorizacaoController::class, 'viajavoltacompanhado'])->name('autorizacao-acompanhado');
+Route::get('/autorizacao/blindada/residencia/viajavolta/acompanhado/pai', [AutorizacaoController::class, 'viajavoltacompanhadopai'])->name('autorizacao-acompanhadopai');
+Route::get('/autorizacao/blindada/residencia/viajavolta/sozinhopass', [AutorizacaoController::class, 'viajavoltasozinhopass'])->name('autorizacao-sozinho-pass');
+Route::get('/autorizacao/blindada/exterior/sozinho-acompanhado', [AutorizacaoController::class, 'sozinhoAcompanhadoExterior'])->name('autorizacao-sozinho-acompanhado-exterior');
+
+//ARQUIVO
+Route::get('/autorizacao/exterior/sozinho', [AutorizacaoController::class, 'AutorizacaoExteriorSozinho'])->name('autorizacao-exterior-sozinho');

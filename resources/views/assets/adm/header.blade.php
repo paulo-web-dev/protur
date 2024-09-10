@@ -398,6 +398,14 @@
                         <div class="side-menu__title">Perrengues</div>
                     </a>
 
+                    <a href="{{route('adm-show-apoiadores')}}" 
+                        class="side-menu side-menu-active">
+                        <div class="side-menu__icon"> <span class="iconify"
+                                data-icon="carbon:help-desk" style="font-size:30px"></span>
+                        </div>
+                        <div class="side-menu__title">Apoiadores</div>
+                    </a>
+
                     
 
         
