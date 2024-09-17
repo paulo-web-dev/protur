@@ -17,7 +17,7 @@ class MembrosController extends Controller
 
     public function show()
     {
-        $membros = Membros::all();
+        $membros = Membros::paginate(20);
         return view('adm.membros.show', [
             'membros' => $membros,
         ]);
@@ -37,7 +37,11 @@ class MembrosController extends Controller
     }
 
     public function uploadCSV(Request $request)
-    {  // Validação do arquivo
+    {  
+        
+        set_time_limit(6000); 
+
+        // Validação do arquivo
         $validator = Validator::make($request->all(), [
             'csv_file' => 'required|mimes:csv,txt|max:2048', // Limita o arquivo a 2MB e somente CSV ou TXT
         ]);
@@ -61,23 +65,32 @@ class MembrosController extends Controller
                     $sobre = " ";
                     $uf = $data[6];
                     $cidade = $data[5];
+                    $cnpj = preg_replace('/\D/', '', $data[3]);
+                    $telefone = preg_replace('/\D/', '', $data[4]);
+                
                     $user = new User();
                     $user->name = $nome;
                     $user->email = $email;
                     $user->password = Hash::make($cnpj);
                     $user->save();
-                    $parceiro = new Parceiros();
+                    $membro = new Membros();
             
-                    $parceiro->nome = $nome;
-                    $parceiro->user_id = $user->id;
-                    $parceiro->email = $email;
-                    $parceiro->celular = $celular;
-                    $parceiro->site = $site;
-                    $parceiro->uf = $uf;
-                    $parceiro->sobre = $sobre;
-                    $parceiro->cidade = $cidade;
-                    $parceiro->cnpj = $cnpj;
-                    $parceiro->status = "Parceiro";
+                    $membro->nome = $nome;
+                    $membro->user_id = $user->id;
+                    $membro->email = $email;
+                    if(strlen($telefone) < 15){
+                        $membro->celular = $telefone;
+                    }else{
+                        $membro->celular = 00000;
+                    }
+                    
+                    $membro->cnpj_cpf = $cnpj;
+                    $membro->ocupacao = $ocupacao;
+                    $membro->sobre = $sobre;
+                    $membro->uf = $uf;
+                    $membro->cidade = $cidade;
+                    $membro->status = "Associado";
+                    $membro->save();
                 }
                 fclose($handle);
             }

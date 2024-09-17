@@ -82,6 +82,7 @@
         <!-- END: Users Layout -->
 
     </div>
+    {{ $membros->links() }}
 @endsection
 
 @push('custom-scripts')
