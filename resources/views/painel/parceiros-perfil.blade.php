@@ -46,7 +46,7 @@
 
                                         <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ms-2 ">{{$parceiro->email}}</span></p>
 
-                                        <p class="text-muted mb-1 font-13"><strong>Cadastro :</strong> <span class="ms-2"><a href="{{$parceiro->site}}">{Clique aqui</a></span></p>
+                                        <p class="text-muted mb-1 font-13"><strong>Cadastro :</strong> <span class="ms-2"><a href="{{$parceiro->site}}">Clique aqui</a></span></p>
                                     </div>
 
                                     <ul class="social-list list-inline mt-3 mb-0">
@@ -74,12 +74,12 @@
                                 <div class="card-body">
                                     <ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
                                         <li class="nav-item">
-                                            <a href="#aboutme" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0">
+                                            <a href="#aboutme" data-bs-toggle="tab" aria-expanded="true" class="nav-link rounded-0 active">
                                                 Sobre
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#timeline" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0 active">
+                                            <a href="#timeline" data-bs-toggle="tab" aria-expanded="false" class="nav-link rounded-0 ">
                                                 Treinamentos
                                             </a>
                                         </li>
@@ -89,8 +89,8 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane" id="aboutme">
+                                    <div class="tab-content ">
+                                        <div class="tab-pane show active" id="aboutme">
 
                                             <h5 class="text-uppercase"><i class="mdi mdi-briefcase me-1"></i>
                                                 Sobre</h5>
@@ -99,19 +99,19 @@
                                                 <div class="timeline-item">
                                                     <i class="mdi mdi-circle bg-info-lighten text-info timeline-icon"></i>
                                                     <div class="timeline-item-info">
-                                                        <h5 class="mt-0 mb-1">Euro Easy</h5>
-                                                        <p class="text-muted mt-2 mb-0 pb-3"> comissão de 13% em hotelaria nacional e internacional, 14% em locações nacionais (exceto Movida) e 10% em locações nacionais Movida e locações internacionais.</p>
+                                                        <h5 class="mt-0 mb-1">{{$parceiro->nome}}</h5>
+                                                        <p class="text-muted mt-2 mb-0 pb-3">{{$parceiro->sobre}}</p>
                                                     </div>
                                                 </div>
 
-                                                <div class="timeline-item">
+                                                {{-- <div class="timeline-item">
                                                     <i class="mdi mdi-circle bg-primary-lighten text-primary timeline-icon"></i>
                                                     <div class="timeline-item-info">
                                                         <h5 class="mt-0 mb-1">Euro Cash:</h5>
                                                         <p class="text-muted mt-2 mb-0 pb-3">tarifas para bater as OTAs – tarifas net com pagamento à vista via PIX.</p>
 
                                                     </div>
-                                                </div>
+                                                </div> --}}
 
                                             </div>
                                             <!-- end timeline -->
@@ -179,7 +179,7 @@
                                         </div> <!-- end tab-pane -->
                                         <!-- end about me section content -->
 
-                                        <div class="tab-pane show active" id="timeline">
+                                        <div class="tab-pane" id="timeline">
 {{-- 
                                             <!-- comment box -->
                                             <div class="border rounded mt-2 mb-3">
@@ -199,7 +199,7 @@
                                             <!-- end comment box --> --}}
 
                                             <!-- Story Box-->
-                                         <div class="border border-light p-2 mb-3">
+                                         {{-- <div class="border border-light p-2 mb-3">
                                                 <div class="d-flex">
                                                     <img class="me-2 rounded-circle" src="https://yt3.ggpht.com/ytc/AIdro_n5qyHFnosHNsTtc8CH7JNfGioSwcuJkWIp92xwfykvxg=s48-c-k-c0x00ffffff-no-rj" alt="Generic placeholder image" height="32">
                                                     <div>
@@ -229,7 +229,7 @@
 
                                             <div class="text-center">
                                                 <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-spin mdi-loading me-1"></i> Load more </a>
-                                            </div>
+                                            </div> --}}
 
                                           
                                         </div>

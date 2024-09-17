@@ -30,6 +30,8 @@ Auth::routes();
 //Rotas Painel ADM Protur
 //Rotas de Membros
 Route::get('/home', [MembrosController::class, 'show'])->name('adm-show-membros');
+Route::get('/upload/arquivo', [MembrosController::class, 'uploadArquivo'])->name('upload-arquivo');
+Route::post('/upload/csv', [MembrosController::class, 'uploadCSV'])->name('upload-csv');
 Route::get('/adm/form/membros', [MembrosController::class, 'form'])->name('adm-form-membro');
 Route::get('/adm/info/membro/{membro}', [MembrosController::class, 'info'])->name('adm-info-membro');
 Route::post('/adm/cad/membros', [MembrosController::class, 'cadastrar'])->name('adm-cad-membro');
@@ -74,7 +76,7 @@ Route::post('/adm/upd/perrengues-cateroria/{perrengueCategoria}', [PerrenguesCat
 //Rotas de Perrengues - Perrengues
 Route::get('/adm/perrengues', [PerrenguesController::class, 'show'])->name('adm-show-perrengues');
 Route::get('/adm/form/perrengues', [PerrenguesController::class, 'form'])->name('adm-form-perrengues');
-Route::get('/adm/form/perrengue/{perrengueCategoria}', [PerrenguesController::class, 'form'])->name('adm-form-perrengues');
+Route::get('/adm/form/perrengue/{perrengueCategoria}', [PerrenguesController::class, 'form'])->name('adm-form-perrengues-categoria');
 Route::get('/adm/info/perrengues/{perrengue}', [PerrenguesController::class, 'info'])->name('adm-info-perrengues');
 Route::post('/adm/cad/perrengues', [PerrenguesController::class, 'cadastrar'])->name('adm-cad-perrengues');
 Route::post('/adm/upd/perrengues/{perrengue}', [PerrenguesController::class, 'update'])->name('adm-upd-perrengues');

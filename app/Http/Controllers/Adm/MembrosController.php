@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Membros;
 use App\Models\User;
 use Hash;
+use Illuminate\Support\Facades\Validator;
 class MembrosController extends Controller
 {
     public function __construct()
@@ -28,6 +29,67 @@ class MembrosController extends Controller
         
         return view('adm.membros.form');
     }
+
+    public function uploadArquivo()
+    {
+        
+        return view('adm.membros.uploadarquivo');
+    }
+
+    public function uploadCSV(Request $request)
+    {  // Validação do arquivo
+        $validator = Validator::make($request->all(), [
+            'csv_file' => 'required|mimes:csv,txt|max:2048', // Limita o arquivo a 2MB e somente CSV ou TXT
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
+
+        // Verificar se o arquivo foi enviado
+        if ($request->hasFile('csv_file')) {
+            $file = $request->file('csv_file');
+            $filePath = $file->getRealPath();
+
+            // Abrir o arquivo e processar linha por linha
+            if (($handle = fopen($filePath, 'r')) !== false) {
+                while (($data = fgetcsv($handle, 1000, ',')) !== false) {
+                    $nome = $data[1];
+                    $email = $data[2];
+                    $celular =$data[4];
+                    $ocupacao = "Parceiro";
+                    $sobre = " ";
+                    $uf = $data[6];
+                    $cidade = $data[5];
+                    $user = new User();
+                    $user->name = $nome;
+                    $user->email = $email;
+                    $user->password = Hash::make($cnpj);
+                    $user->save();
+                    $parceiro = new Parceiros();
+            
+                    $parceiro->nome = $nome;
+                    $parceiro->user_id = $user->id;
+                    $parceiro->email = $email;
+                    $parceiro->celular = $celular;
+                    $parceiro->site = $site;
+                    $parceiro->uf = $uf;
+                    $parceiro->sobre = $sobre;
+                    $parceiro->cidade = $cidade;
+                    $parceiro->cnpj = $cnpj;
+                    $parceiro->status = "Parceiro";
+                }
+                fclose($handle);
+            }
+
+            return back()->with('success', 'Arquivo CSV processado com sucesso!');
+        }
+
+        return back()->withErrors('Falha ao carregar o arquivo.');
+    
+    }
+
+
 
         
     public function info(Membros $membro)

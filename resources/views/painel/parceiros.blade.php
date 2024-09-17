@@ -42,7 +42,7 @@
 
                                     <div class="text-center">
                                         <img src="{{ asset('fotos-parceiros/' . $parceiro->foto) }}" class="rounded-circle avatar-md img-thumbnail" alt="friend">
-                                        <h4 class="mt-3 my-1"><a href="pages-profile-2.html" class="text-reset">{{$parceiro->nome}}<i class="mdi mdi-check-decagram text-success"></i></a></h4>
+                                        <h4 class="mt-3 my-1"><a href="{{route('parceiros-perfil', ['parceiro' => $parceiro->id])}}" class="text-reset">{{$parceiro->nome}}<i class="mdi mdi-check-decagram text-success"></i></a></h4>
                                         <p class="mb-0 text-muted"><i class="mdi mdi-email-outline me-1"></i>{{$parceiro->email}}</p>
                                         <hr class="bg-dark-lighten my-3">
                                         <h5 class="mt-3 fw-semibold text-muted">Parceiro</h5>
