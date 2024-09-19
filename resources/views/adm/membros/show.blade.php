@@ -63,6 +63,13 @@
                 <div class="flex items-center justify-center lg:justify-start text-gray-600 mt-1">
                     <i data-feather="phone" class="w-3 h-3 mr-2"></i> {{ $membro->celular }}
                 </div>
+                <div class="flex items-center justify-center lg:justify-start text-gray-600 mt-1"
+              @if ($membro->status == 'Associado')  style="color: green"
+              @else
+               style="color: red"
+              @endif
+                > <i data-feather="book" class="w-3 h-3 mr-2"></i> {{ $membro->status }}
+                </div>
             </div>
         </div>
     </div>

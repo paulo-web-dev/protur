@@ -139,7 +139,7 @@ class MembrosController extends Controller
         $membro->sobre = $sobre;
         $membro->uf = $uf;
         $membro->cidade = $cidade;
-        $membro->status = "Assinante";
+        $membro->status = "Associado";
 
         if(isset($request->file)){
             $photoname = $request->file->getClientOriginalName();
@@ -177,7 +177,7 @@ class MembrosController extends Controller
         $membro->sobre = $sobre;
         $membro->uf = $uf;
         $membro->cidade = $cidade;
-        $membro->status = "Assinante";
+        $membro->status = $request->status;
 
         if(isset($request->file)){
             $photoname = $request->file->getClientOriginalName();

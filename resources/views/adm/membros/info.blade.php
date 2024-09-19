@@ -135,7 +135,21 @@
                                 <input id="cidade" type="text" name="cidade" class="form-control"
                                    value="{{$membro->cidade}}" placeholder="Cidade" required>
                                     </div>
-                                
+                                    <div class="mt-3">
+                                       <label for="status" class="form-label"><strong>Status</strong></label>
+                                <div class="relative">
+                                    <select class="form-control" name="status" id="status" >
+                                        @if($membro->status == 'Associado')
+                                        <option value="{{$membro->status}}">{{$membro->status}} (Ativo)</option>
+                                        <option value="Desativado/Inadimplente">Desativado/Inadimplente<option>
+                                        @else
+                                         <option value="{{$membro->status}}">{{$membro->status}} </option>
+                                        <option value="Associado">Associado (Ativo) <option>
+                                        @endif 
+                                    </select>
+                                    <br><br>
+                                    </div>
+
                             </div>
                     {{-- <div class="col-span-12 xl:col-span-6">
                         <label class="form-label"><strong>Upload de Imagem</strong></label>
