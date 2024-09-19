@@ -68,7 +68,7 @@ class MembrosController extends Controller
                     $cnpj = preg_replace('/\D/', '', $data[3]);
                     $telefone = preg_replace('/\D/', '', $data[4]);
                 
-                    $user = new User();
+                    $user = new User(); 
                     $user->name = $nome;
                     $user->email = $email;
                     $user->password = Hash::make($cnpj);
