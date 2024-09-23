@@ -120,9 +120,71 @@ class AutorizacaoController extends Controller
         
         return view('autorizacao.viajavoltacompanhadopai');
     }
+//Parte Final
+    public function AutorizacaoExteriorSozinho(Request $request){
+        $nome_acompanhante = $request->nome_acompanhante;
+        $parentesco = $request->parentesco;
+        $telefone = $request->Telefone;
+        $rg = $request->rg;
+        $orgao_emissor_responsavel = $request->orgao_emissor_responsavel;
+        $numero_acompanhante = $request->numero_acompanhante;
+        $bairro_acompanhante = $request->bairro_acompanhante;
+        $cep = $request->cep;
+        $rua = $request->rua;
+        $cidade = $request->cidade;
+        $estado = $request->estado;
+        $nome_crianca = $request->nome_crianca;
+        $rg_crianca = $request->rg_crianca;
+        $bairro_crianca = $request->bairro_crianca;
+        $nascimento_crianca = $request->nascimento_crianca;
+        $cep_crianca = $request->cep;
+        $rua_crianca = $request->rua_crianca;
+        $cidade_crianca = $request->cidade_crianca;
+        $estado_crianca = $request->estado_crianca;
+        $estado_nascimento_crianca = $request->estado_nascimento_crianca;
+        $cidade_nascimento_crianca = $request->cidade_nascimento_crianca;
+        $cidade_documento = $request->cidade_documento;
+        $orgao_emissor_crianca = $request->orgao_emissor_crianca;
+        $numero_crianca = $request->numero_crianca;
+        $hoje = date("d/m/Y");
+        $dois_anos = date("d/m/Y", strtotime("+2 years"));
 
-    public function AutorizacaoExteriorSozinho(){
+        return view('autorizacao.exterior-sozinho', [
+            'nome_acompanhante' => $nome_acompanhante,
+            'parentesco' => $parentesco,
+            'telefone' => $telefone,
+            'rg' => $rg,
+            'orgao_emissor_responsavel' => $orgao_emissor_responsavel,
+            'numero_acompanhante' => $numero_acompanhante,
+            'bairro_acompanhante' => $bairro_acompanhante,
+            'cep' => $cep,
+            'rua' => $rua,
+            'cidade' => $cidade,
+            'estado' => $estado,
+            'nome_crianca' => $nome_crianca,
+            'rg_crianca' => $rg_crianca,
+            'numero_crianca' => $numero_crianca,
+            'bairro_crianca' => $bairro_crianca,
+            'nascimento_crianca' => $nascimento_crianca,
+            'cep_crianca' => $cep_crianca,
+            'rua_crianca' => $rua_crianca,
+            'cidade_nascimento_crianca' => $cidade_nascimento_crianca,
+            'estado_nascimento_crianca' =>$estado_nascimento_crianca,
+            'cidade_documento' =>$cidade_documento,
+            'cidade_crianca' => $cidade_crianca,
+            'estado_crianca' => $estado_crianca,
+            'hoje' => $hoje,
+            'orgao_emissor_crianca' => $orgao_emissor_crianca,
+            'dois_anos' => $dois_anos,
+        ]);
+    }
+
+    public function FormAutorizacaoExteriorSozinho(){
         
-        return view('autorizacao.exterior-sozinho');
+     
+
+        return view('autorizacao.form-autorizacao-sozinho', [
+        
+        ]);
     }
 }

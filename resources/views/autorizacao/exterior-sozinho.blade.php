@@ -43,70 +43,56 @@
 </head>
 <body>
     <div class="page">
-        <h1>AUTORIZAÇÃO DE VIAGEM INTERNACIONAL</h1>
+        <h1>AUTORIZAÇÃO DE VIAGEM INTERNACIONAL</h1><br><br>
         <p>
             PARA CRIANÇAS E ADOLESCENTES DESACOMPANHADOS<br>
             Fundamento: Resolução CNJ 131/2011
         </p>
         
-        <p>Válida até: 10/09/2026 (no máximo dois anos a partir da data da emissão)</p>
+        <p>Válida até: {{$dois_anos}} (no máximo dois anos a partir da data da emissão)</p>
         
         <p>
-            Eu, João Silva Santos <br>
-            (  ) Mãe;   (X) Pai;   (  ) Tutor(a);  (  ) Guardião(ã);
+            Eu, {{$nome_acompanhante}} <br>
+            (@if($parentesco == 'Mãe')X @endif) Mãe;   (@if($parentesco == 'pai')X @endif) Pai;   (@if($parentesco == 'Tutor(a)')X @endif) Tutor(a);  (@if($parentesco == 'Guardião(ã)')X @endif) Guardião(ã);
         </p>
 
         <p>
-            Passaporte / RG: 123458289-x, expedido por SSPSP, Celular: (11) 94176-6123;
+            RG: {{$rg}}, expedido por {{$orgao_emissor_responsavel}}, Celular: {{$telefone}};
         </p>
 
         <p>
-            Residente na: Rua mercurio 452 <br>
-            Endereço completo: Rua Mercurio 452, Jardim Satelite, Várzea Paulista - SP
+            Residente na: {{$rua}}, <br>
+            Endereço completo: {{$rua}}, {{$numero_acompanhante}}, {{$bairro_acompanhante}}, {{$cidade}} - {{$estado}}
         </p>
-        
-        <p>Eu, Maria Silva Santos <br>
-             (  ) Mãe;   (  ) Pai;   (  ) Tutor(a);  (  ) Guardião(ã);
-        </p>
+      
 
         <p>
-            Passaporte / RG:123458289-x, expedido por SSPSP, Celular: (21) 12345-6789;
-        </p>
-
-        <p>
-            Residente na: Rua mercurio 452 <br>
-            Endereço completo: Rua Mercurio 452, Jardim Satelite, Várzea Paulista - SP
-        </p>
-
-        <p>
-            AUTORIZAMOS A VIAJAR DESACOMPANHADO<br>
+            AUTORIZO A VIAJAR DESACOMPANHADO<br>
             (X) livremente pelo exterior
         </p>
 
         <p>
-            A criança / o adolescente João SIlva Santos Junior,<br>
-            Nascido(a) no dia 10/02/2002 na cidade Jundiaí, Estado São Paulo
+            A criança / o adolescente {{$nome_crianca}},<br>
+            Nascido(a) no dia {{$nascimento_crianca}} na cidade de {{$cidade_nascimento_crianca}} - {{$estado_nascimento_crianca}}
         </p>
 
         <p>
-            Portador(a) do Passaporte / RG:123458289-x, expedido por SSP<br>
-             Residente na: Rua mercurio 452 <br>
-            Endereço completo: Rua Mercurio 452, Jardim Satelite, Várzea Paulista - SP
+            Portador(a) do  RG:{{$rg_crianca}}, expedido por {{$orgao_emissor_crianca}}<br>
+             Residente na: {{$rua_crianca}}, <br>
+            Endereço completo: {{$rua_crianca}}, {{$numero_crianca}},{{$bairro_crianca}}, {{$cidade_crianca}}, - {{$estado_crianca}}
         </p>
 
         <p class="signature">
-           Jundiaí , 10 de Setembro de 2024.<br>
+           {{$cidade_documento}} , {{$hoje}}.<br>
         </p>
 
         <p class="signature">
-            Assinatura de pai, mãe, tutor(a) ou guardião(ã)<br>
-            (Obrigatório o reconhecimento de firma, Res. CNJ 131/2011)
+            Assinatura de {{$parentesco}}<br>
+            (Obrigatório o reconhecimento de firma, Res. CNJ 131/2011)<br><br><br>
+            __________________________________________
         </p>
         
-        <p class="signature">
-            Assinatura de pai, mãe, tutor(a) ou guardião(ã)<br>
-            (Obrigatório o reconhecimento de firma, Res. CNJ 131/2011)
-        </p>
+     
     </div>
 </body>
 </html>

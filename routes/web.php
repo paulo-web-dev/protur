@@ -129,4 +129,5 @@ Route::get('/autorizacao/blindada/residencia/viajavolta/sozinhopass', [Autorizac
 Route::get('/autorizacao/blindada/exterior/sozinho-acompanhado', [AutorizacaoController::class, 'sozinhoAcompanhadoExterior'])->name('autorizacao-sozinho-acompanhado-exterior');
 
 //ARQUIVO
-Route::get('/autorizacao/exterior/sozinho', [AutorizacaoController::class, 'AutorizacaoExteriorSozinho'])->name('autorizacao-exterior-sozinho');
+Route::get('/autorizacao/form/exterior/sozinho', [AutorizacaoController::class, 'FormAutorizacaoExteriorSozinho'])->name('autorizacao-exterior-sozinho-form');
+Route::post('/autorizacao/exterior/sozinho', [AutorizacaoController::class, 'AutorizacaoExteriorSozinho'])->name('autorizacao-exterior-sozinho');
