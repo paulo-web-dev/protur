@@ -72,7 +72,7 @@ Route::get('/adm/form/perrengues-cateroria', [PerrenguesCategoriaController::cla
 Route::get('/adm/info/perrengue-categoria/{perrengueCategoria}', [PerrenguesCategoriaController::class, 'info'])->name('adm-info-perrengue-categoria');
 Route::post('/adm/cad/perrengues-cateroria', [PerrenguesCategoriaController::class, 'cadastrar'])->name('adm-cad-perrengue-categoria');
 Route::post('/adm/upd/perrengues-cateroria/{perrengueCategoria}', [PerrenguesCategoriaController::class, 'update'])->name('adm-upd-perrengue-categoria');
-
+Route::get('/adm/destroy/perrengue/{perrengue}', [PerrenguesCategoriaController::class, 'destroy'])->name('adm-info-perrengue-destroy');
 //Rotas de Perrengues - Perrengues
 Route::get('/adm/perrengues', [PerrenguesController::class, 'show'])->name('adm-show-perrengues');
 Route::get('/adm/form/perrengues', [PerrenguesController::class, 'form'])->name('adm-form-perrengues');

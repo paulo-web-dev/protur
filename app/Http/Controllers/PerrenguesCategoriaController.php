@@ -65,4 +65,11 @@ class PerrenguesCategoriaController extends Controller
        
         return redirect()->route('adm-show-perrengues-cateroria');
     }
+
+    public function destroy(Perrengue $perrengue){
+      
+        $perrengue->delete();
+       
+        return redirect()->route('adm-show-perrengues-cateroria');
+    }
 }

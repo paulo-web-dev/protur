@@ -103,10 +103,14 @@
                                       
                                                <td class="border">
                                             <div class="flex justify-center">
-                                                <a class="flex text-theme-1 mr-3"
-                                                    href="#">
+                                               <a href="javascript:void(0);" class="flex text-theme-1 mr-3" onclick="event.preventDefault(); document.getElementById('delete-perrengue-{{ $perrengues->id }}').submit();">
                                                     <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Excluir
                                                 </a>
+
+                                                <form id="delete-perrengue-{{ $perrengues->id }}" action="{{ route('adm-info-perrengue-destroy', $perrengues->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                               
                                             </div>
                                            
