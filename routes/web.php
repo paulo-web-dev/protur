@@ -86,7 +86,7 @@ Route::get('/adm/form/modulos/{perrengue}', [ModulosController::class, 'form'])-
 Route::get('/adm/info/modulos/{modulo}', [ModulosController::class, 'info'])->name('adm-info-modulos');
 Route::post('/adm/cad/modulos', [ModulosController::class, 'cadastrar'])->name('adm-cad-modulos');
 Route::post('/adm/upd/modulos/{modulo}', [ModulosController::class, 'update'])->name('adm-upd-modulos');
-
+Route::delete('/adm/destroy/modulo/{modulo}', [ModulosController::class, 'destroy'])->name('adm-info-modulo-destroy');
 
 //Rotas Portal Protur
 Route::get('/portal', [HomeController::class, 'index'])->name('home');

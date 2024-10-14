@@ -111,13 +111,16 @@
                                             </div>
                                            
                                         </td>
-                                      
-                                               <td class="border">
+                                        <td class="border">
                                             <div class="flex justify-center">
-                                                <a class="flex text-theme-1 mr-3"
-                                                    href="#">
+                                               <a href="javascript:void(0);" class="flex text-theme-1 mr-3" onclick="event.preventDefault(); document.getElementById('delete-modulo-{{ $modulo->id }}').submit();">
                                                     <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Excluir
                                                 </a>
+
+                                                <form id="delete-modulo-{{ $perrengues->id }}" action="{{ route('adm-info-modulo-destroy', $modulo->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
                                               
                                             </div>
                                            

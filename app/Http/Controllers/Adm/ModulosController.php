@@ -67,4 +67,12 @@ class ModulosController extends Controller
        
         return redirect()->route('adm-info-perrengues', ['perrengue' => $modulo->id_perrengue]);
     }
+
+
+    public function destroy(Modulos $modulo){
+        $id_perrengue = $modulo->id_perrengue;
+        $modulo->delete();
+       
+        return redirect()->route('adm-info-perrengues', ['perrengue' => $id_perrengue]);
+    }
 }
