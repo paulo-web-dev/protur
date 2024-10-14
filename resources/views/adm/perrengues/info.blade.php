@@ -117,7 +117,7 @@
                                                     <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Excluir
                                                 </a>
 
-                                                <form id="delete-modulo-{{ $perrengues->id }}" action="{{ route('adm-info-modulo-destroy', $modulo->id) }}" method="POST" style="display: none;">
+                                                <form id="delete-modulo-{{ $modulo->id }}" action="{{ route('adm-info-modulo-destroy', $modulo->id) }}" method="POST" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
